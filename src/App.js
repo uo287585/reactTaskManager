@@ -14,7 +14,7 @@ function App() {
 
   return ( 
       <div className='container'>
-        <ListOfTasksComponent tasks={tasks} setTaskSelected={setTaskSelected}/>
+        <ListOfTasksComponent setTasks={setTasks} tasks={tasks} setTaskSelected={setTaskSelected}/>
         
         <CreateTaskComponent setTasks={setTasks} tasks={tasks}/>
 

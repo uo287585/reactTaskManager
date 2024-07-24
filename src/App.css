@@ -65,3 +65,17 @@ h1 {
   border: none;
   border-radius: 3px;
 }
+
+.task-list li{
+  position: relative;
+}
+
+.delete-button{
+  position:absolute;
+  top:50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: red;
+}
