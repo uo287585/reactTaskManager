@@ -7,6 +7,7 @@ function App() {
   let [place,setPlace]=useState("")
   let [priority,setPriority]=useState(0)
 
+  let [taskSelected,setTaskSelected]=useState({})
 
   let [tasks,setTasks] = useState([{name:"Task1",place:"School",priority:0},
     {name:"Clean",place:"House",priority:0}]) 
@@ -19,13 +20,17 @@ function App() {
     setPriority(0)
   }
 
+  let onClickSelectedTask = (name) =>{
+    let foundTask=tasks.find(t=>t.name==name)
+    setTaskSelected(foundTask)
+  }
 
   return ( 
     
       <div className='container'>
         <h1>List of tasks</h1>
        <ul className='task-list'>
-          {tasks.map(t=><li key={t.name}>
+          {tasks.map(t=><li key={t.name} onClick={()=>{onClickSelectedTask(t.name)}}>
             <b>{t.name}</b>
             </li>)}
         </ul>
@@ -38,7 +43,7 @@ function App() {
           <button onClick={addTask}>Add task</button>
         </div>
 
-        <DetailsOfTasksComponent/>
+        <DetailsOfTasksComponent task={taskSelected}/>
       </div>
 
       
