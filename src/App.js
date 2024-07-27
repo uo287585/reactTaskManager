@@ -3,7 +3,7 @@ import {useState,useRef,useEffect} from "react";
 import DetailsOfTasksComponent from './Components/DetailsOfTasksComponent';
 import ListOfTasksComponent from './Components/ListOfTasksComponent';
 import CreateTaskComponent from './Components/CreateTaskComponent';
-import {Route, Routes} from 'react-router-dom';
+import {Route, Routes,Link} from 'react-router-dom';
 
 function App() {
   let [taskSelected,setTaskSelected]=useState({})
@@ -15,6 +15,13 @@ function App() {
 
   return ( 
       <div className='container'>
+        <h1>My Task Manager</h1>
+        <nav>
+          <ul className='navbar'>
+            <li><Link to="/">Tasks</Link></li>
+            <li><Link to="/createTask">Create Task</Link></li>
+          </ul>
+        </nav>
         <Routes>
           <Route path="/" element={<ListOfTasksComponent setTasks={setTasks} tasks={tasks} setTaskSelected={setTaskSelected}/>}></Route>
           <Route path="/createTask" element={<CreateTaskComponent setTasks={setTasks} tasks={tasks}/>}></Route>
