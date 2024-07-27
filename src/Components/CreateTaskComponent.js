@@ -1,16 +1,19 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 let CreateTaskComponent = (props) => {
     let {setTasks,tasks} = props
     let [name,setName]=useState("")
   let [place,setPlace]=useState("")
   let [priority,setPriority]=useState(0)
+  let navigate = useNavigate();
     let addTask=()=>{
         let newTask = {name:name,place:place,priority:priority}
         setTasks([...tasks,newTask])
         setName("")
         setPlace("")
         setPriority(0)
+        navigate("/")
       }
     
     return (
