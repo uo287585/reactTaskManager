@@ -3,6 +3,7 @@ import {useState,useRef,useEffect} from "react";
 import DetailsOfTasksComponent from './Components/DetailsOfTasksComponent';
 import ListOfTasksComponent from './Components/ListOfTasksComponent';
 import CreateTaskComponent from './Components/CreateTaskComponent';
+import {Route, Routes} from 'react-router-dom';
 
 function App() {
   let [taskSelected,setTaskSelected]=useState({})
@@ -14,11 +15,12 @@ function App() {
 
   return ( 
       <div className='container'>
-        <ListOfTasksComponent setTasks={setTasks} tasks={tasks} setTaskSelected={setTaskSelected}/>
+        <Routes>
+          <Route path="/" element={<ListOfTasksComponent setTasks={setTasks} tasks={tasks} setTaskSelected={setTaskSelected}/>}></Route>
+          <Route path="/createTask" element={<CreateTaskComponent setTasks={setTasks} tasks={tasks}/>}></Route>
+          <Route path="/detailsTask" element={<DetailsOfTasksComponent task={taskSelected}/>}></Route>
+        </Routes>
         
-        <CreateTaskComponent setTasks={setTasks} tasks={tasks}/>
-
-        <DetailsOfTasksComponent task={taskSelected}/>
       </div>
   );
 }
